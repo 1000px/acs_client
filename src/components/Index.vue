@@ -7,9 +7,9 @@
 <script>
 export default {
     name: 'Index',
-    data: () => {
-
-    }
+    data: () => ({
+        
+    })
 }
 </script>
 

@@ -1,24 +1,27 @@
 <template>
   <v-app-bar
-    color="deep-purple accent-4"
-    dense
-    dark
+    color="white"
+    app
     >
-  <v-app-bar-nav-icon></v-app-bar-nav-icon>
-  <v-toolbar-title>自助建站</v-toolbar-title>
+  <v-app-bar-nav-icon @click="toggleNav"></v-app-bar-nav-icon>
   <v-spacer></v-spacer>
   <v-btn icon>
-      <v-icon>mdi-magnify</v-icon>
+    <v-icon>mdi-magnify</v-icon>
   </v-btn>
   </v-app-bar>
 </template>
 
 <script>
   export default {
-    name: 'HelloWorld',
+    name: 'Header',
 
     data: () => ({
         information: '顶部导航'
-    })
+    }),
+    methods: {
+      toggleNav () {
+        this.$store.commit('toggleNav')
+      }
+    }
   }
 </script>

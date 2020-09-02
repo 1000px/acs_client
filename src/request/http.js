@@ -1,9 +1,11 @@
 import axios from 'axios'
 // import QS from 'qs'
 import storage from '../plugins/storage'
+import router from '../router'
+import store from '../plugins/store'
 
 const service = axios.create({
-    baseURL: 'http://192.168.11.205:5000/api/v1',
+    baseURL: 'http://localhost:5000/api/v1',
     timeout: 15000
 })
 
@@ -31,11 +33,17 @@ service.interceptors.response.use(
         }
     },
     error => {
+        console.log('error', error)
         if (error.response.status) {
             let errorCode = error.response.status
             switch (errorCode) {
                 case 401:
                     storage.remove('bearerToken')
+                    router.push({name: 'Login'})
+                    store.commit('toggleGlobalAlert', {
+                        shown: true,
+                        text: '状态已过期，请重新登录。'
+                    })
                     break
                 case 403:
                     break
