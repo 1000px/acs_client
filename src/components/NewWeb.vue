@@ -34,7 +34,7 @@
                         :items="priceList"></v-select>
                 </v-col>
             </v-row>
-            <v-btn class="mr-4" color="primary">提交</v-btn>
+            <v-btn class="mr-4" color="primary" @click="gotoPay">提交</v-btn>
             <v-btn color="warning" @click="clearForm">清除</v-btn>
         </form>
     </v-container>
@@ -105,6 +105,10 @@ export default {
             this.sitename = ''
             this.desc = ''
             this.sitetype = ''
+        },
+        gotoPay: function () {
+            // 前往付款页面
+            this.$router.push({name: 'Payload'})
         }
     }
 }

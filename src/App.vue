@@ -1,14 +1,18 @@
 <template>
   <v-app>
-    <v-snackbar v-model="globalAlert.shown" :vertical="vertical">
+    <v-snackbar 
+      v-model="globalAlert.shown"
+      timeout="3000"
+      color="error"
+      top
+    >
       {{globalAlert.text}}
       <template v-slot:action="{ attrs }">
         <v-btn
-          color="indigo"
           text
           v-bind="attrs"
           @click="hideAlert"
-          >Close</v-btn>
+          >关闭</v-btn>
       </template>
     </v-snackbar>
     <router-view />
@@ -27,6 +31,12 @@ export default {
   data: () => ({
     vertical: true
   }),
+  created () {
+    this.$router.beforeEach((to, from, next) => {
+      // console.log(to)
+      next()
+    })
+  },
   computed: {
     globalAlert: function () {
       return this.$store.state.globalAlert

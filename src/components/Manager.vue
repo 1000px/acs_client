@@ -5,6 +5,14 @@
             color="blue"
             app
             >
+            <v-img src="../assets/logo-circle.png"
+                width="90"
+                height="90"
+                contain
+                style="margin: 24px auto;"
+            ></v-img>
+            <div class="text-p text-center ma-2 white--text">索亚图建站系统</div>
+            <v-divider color="white" class="ma-3"></v-divider>
             <v-list
                 dense
                 class="nav-list"
@@ -12,7 +20,7 @@
                 <v-list-item 
                     v-for="nav in navs" 
                     :key="nav.title">
-                    <v-list-item-icon><v-icon>{{ nav.icon }}</v-icon></v-list-item-icon>
+                    <v-list-item-icon><v-icon size="18">{{ nav.icon }}</v-icon></v-list-item-icon>
                     <v-list-item-content>
                         <router-link :to="nav.href">{{ nav.title }}</router-link>
                     </v-list-item-content>
@@ -28,9 +36,6 @@
                     <v-col>
                         <v-header></v-header>
                         <v-breadcrumbs :items="breadcrumbs">
-                            <template v-slot:divider>
-                                <v-icon>mdi-forward</v-icon>
-                            </template>
                         </v-breadcrumbs>
                         <router-view></router-view>
                     </v-col>
@@ -53,25 +58,8 @@ export default {
     data: () => ({
         cover: false,
         navs: [
-            { title: '用户管理', icon: 'mdi-view-dashboard', href: '/mng/user' },
-            { title: '网站管理', icon: 'mdi-image', href: '/mng/web' }
-        ],
-        breadcrumbs: [
-            {
-                text: '控制中心',
-                disabled: false,
-                href: 'breadcrumbs_dashboard'
-            },
-            {
-                text: '用户管理',
-                disabled: false,
-                href: 'breadcrumbs_link_1'
-            },
-            {
-                text: '1000px',
-                disabled: true,
-                href: 'breadcrumbs_link_2'
-            }
+            { title: '用户管理', icon: 'fa fa-users', href: '/mng/user' },
+            { title: '网站管理', icon: 'fa fa-server', href: '/mng/web' }
         ],
         expandOnHover: true
     }),
@@ -81,9 +69,12 @@ export default {
     computed: {
         navShown () {
             return this.$store.state.navShown
+        },
+        breadcrumbs () {
+            return this.$store.state.breads
         }
     }
-}
+};
 </script>
 
 <style>
@@ -93,7 +84,11 @@ export default {
 .v-application--is-ltr .v-list-item__icon:first-child {
     margin-right: 12px;
 }
-.v-application .nav-list a {
+.v-application .nav-list {
+    color: #ffffff;
+}
+.v-application .nav-list a,
+.v-application .nav-list i {
     color: #ffffff;
     text-decoration-line: none;
 }

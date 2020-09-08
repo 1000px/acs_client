@@ -1,0 +1,26 @@
+<!doctype html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <img id="imgId" />
+    <script type="text/javascript">
+      window.onload = function() {
+        console.log('this is from app outside message')
+        var xmlhttp = new XMLHttpRequest()
+        xmlhttp.open('get', 'http://localhost:5000/file/v1/img_code', true)
+        xmlhttp.responseType = 'blob'
+        xmlhttp.onload = function() {
+          if (this.status == 200) {
+            console.log(100, this.response)
+            var _url = window.URL.createObjectURL(this.response)
+            document.getElementById('imgId').src = _url
+          }
+        }
+        xmlhttp.send()
+      }
+    </script>
+</body>
+</html>

@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 const storage = {
     // 设置
     set (key, value) {
@@ -12,4 +14,7 @@ const storage = {
         localStorage.removeItem(key)
     }
 }
+
+Vue.use(storage)
+
 export default storage

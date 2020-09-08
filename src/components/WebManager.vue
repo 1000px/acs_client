@@ -5,21 +5,21 @@
                 cols="4"
             >
                 <v-card 
-                    class="max-auto" 
+                    class="max-auto create-site" 
                     tile
-                    style="height: 100%; min-height: 300px;"
+                    hover
                     align="center"
-                    justify="center"
+                    style="height: 100%; min-height: 300px;"
                     @click="createSite"
                 >
-                    <v-icon>mdi-plus</v-icon>
+                    <v-icon size="24">fa fa-plus</v-icon>
                 </v-card>
             </v-col>
             <v-col cols="4"
                 v-for="site in sites"
                 :key="site.id"
             >
-                <v-card class="mx-auto" tile>
+                <v-card class="mx-auto pb-1">
                     <v-img class="white--text align-end"
                         height="200px"
                         src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
@@ -31,8 +31,8 @@
                     </v-card-text>
 
                     <v-card-actions>
-                        <v-btn color="blue" text>访问</v-btn>
-                        <v-btn color="blue" text>图标</v-btn>
+                        <v-btn outlined color="primary" class="ml-2">访问</v-btn>
+                        <v-btn outlined color="warning">图标</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>
@@ -61,12 +61,17 @@ export default {
             this.$router.push({ name: 'NewWeb' })
         }
     }
-}
+};
 </script>
 
 <style scoped>
 .site-card {
     float: left;
     margin-bottom: 32px;
+}
+.create-site {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>
