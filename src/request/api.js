@@ -31,6 +31,10 @@ const getSites = (params) => {
     return service.get('/sites/', { params: params })
 }
 
+const getPayUrl = (params) => {
+    return service.get('/pay-url', JSON.stringify(params))
+}
+
 export default {
     // 登录注册
     login,
@@ -44,5 +48,6 @@ export default {
     toggleDisabled,
 
     // 网站管理
-    getSites
+    getSites,
+    getPayUrl
 }

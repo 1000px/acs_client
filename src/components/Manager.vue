@@ -12,7 +12,7 @@
                 style="margin: 24px auto;"
             ></v-img>
             <div class="text-p text-center ma-2 white--text">索亚图建站系统</div>
-            <v-divider color="white" class="ma-3"></v-divider>
+            <!-- <v-divider color="white" class="ma-3"></v-divider> -->
             <v-list
                 dense
                 class="nav-list"
