@@ -50,13 +50,14 @@ service.interceptors.response.use(
         }
     },
     error => {
-        if (error.response.status) {
+        if (error.response && error.response.status) {
             let errorCode = error.response.status
             switch (errorCode) {
                 case 400:
                     break
                 case 401:
                     storage.remove('bearerToken')
+                    storage.remove('currentUser')
                     router.push({name: 'Login'})
                     store.commit('toggleGlobalAlert', {
                         shown: true,
@@ -71,6 +72,11 @@ service.interceptors.response.use(
                     console.log('失败：未约定的状态码。')
             }
             return Promise.reject(error.response)
+        } else {
+            store.commit('toggleGlobalAlert', {
+                shown: true,
+                text: '网络错误，请稍后再试！'
+            })
         }
     }
 )

@@ -17,8 +17,7 @@ export default {
   methods: {
     getPayUrl: function() {
       api.getPayUrl().then(data => {
-        console.log(data)
-        window.location.href = data.url
+        window.open(data.url)
       }, err => {
         console.log(err)
       })

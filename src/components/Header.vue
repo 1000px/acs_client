@@ -28,47 +28,48 @@
 </template>
 
 <script>
-  import storage from '../plugins/storage'
-  export default {
-    name: 'Header',
+import storage from '../plugins/storage'
+export default {
+  name: 'Header',
 
-    data: () => ({
-        isShown: false,
-        ctrls: [
-          {
-            id: 1,
-            text: '我的信息',
-            url: '/mng/my-infor'
-          },
-          {
-            id: 2,
-            text: '修改密码',
-            url: '/mng/modify-password'
-          }
-        ]
-    }),
-    methods: {
-      toggleNav () {
-        this.$store.commit('toggleNav')
-      },
-      gotoInnerMsg () {
-        if (this.$router.currentRoute.path !== '/mng/inner-msg')
-          this.$router.push({path: '/mng/inner-msg'})
-      },
-      toggleTools () {
-        this.isShown = !this.isShown
-      },
-      toolNav (tool) {
-        this.isShown = !this.isShown
-        if (this.$router.currentRoute.path !== tool.url)
-          this.$router.push({path: tool.url})  
-      },
-      logout () {
-        storage.remove('bearerToken')
-        this.$router.push({name: 'Login'})
-      }
+  data: () => ({
+      isShown: false,
+      ctrls: [
+        {
+          id: 1,
+          text: '我的信息',
+          url: '/mng/my-infor'
+        },
+        {
+          id: 2,
+          text: '修改密码',
+          url: '/mng/modify-password'
+        }
+      ]
+  }),
+  methods: {
+    toggleNav () {
+      this.$store.commit('toggleNav')
+    },
+    gotoInnerMsg () {
+      if (this.$router.currentRoute.path !== '/mng/inner-msg')
+        this.$router.push({path: '/mng/inner-msg'})
+    },
+    toggleTools () {
+      this.isShown = !this.isShown
+    },
+    toolNav (tool) {
+      this.isShown = !this.isShown
+      if (this.$router.currentRoute.path !== tool.url)
+        this.$router.push({path: tool.url})  
+    },
+    logout () {
+      storage.remove('bearerToken')
+      storage.remove('currentUser')
+      this.$router.push({name: 'Login'})
     }
-  };
+  }
+};
 </script>
 
 <style scope>

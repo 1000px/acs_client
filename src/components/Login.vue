@@ -61,6 +61,7 @@ export default {
                 if (res.token) {
                     storage.remove('bearerToken')
                     storage.set('bearerToken', 'Bearer ' + res.token)
+                    storage.set('currentUser', res.user)
                     this.$store.commit('updateUser', res.user)
                     this.$router.push({name: 'Mng'})
                 }

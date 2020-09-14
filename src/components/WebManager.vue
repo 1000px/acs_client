@@ -31,8 +31,8 @@
                     </v-card-text>
 
                     <v-card-actions>
-                        <v-btn outlined color="primary" class="ml-2">访问</v-btn>
-                        <v-btn outlined color="warning">图标</v-btn>
+                        <v-btn outlined color="primary" class="ml-2">访问网站</v-btn>
+                        <v-btn outlined color="warning">运行状态</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>

@@ -1,5 +1,7 @@
 import service from './http'
 import fileService from './fileApi'
+import fileUploader from './file_uploader'
+import fileGetter from './file_download'
 // import storage from '../plugins/storage'
 // 登录、注册
 const login = (params) => {
@@ -35,6 +37,18 @@ const getPayUrl = (params) => {
     return service.get('/pay-url', JSON.stringify(params))
 }
 
+const updateUser = (params) => {
+    return service.put('/user', JSON.stringify(params))
+}
+
+const uploadImg = (data) => {
+    return fileUploader.post('/upload_avatar', data)
+}
+
+const getImg = (avatar_name) => {
+    return fileGetter.get('/get_avatar/' + avatar_name)
+}
+
 export default {
     // 登录注册
     login,
@@ -49,5 +63,8 @@ export default {
 
     // 网站管理
     getSites,
-    getPayUrl
+    getPayUrl,
+    updateUser,
+    uploadImg,
+    getImg
 }
